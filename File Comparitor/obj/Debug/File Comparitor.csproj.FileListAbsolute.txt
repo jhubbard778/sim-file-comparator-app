@@ -1,0 +1,10 @@
+C:\Users\Jakob\source\repos\File Comparitor\bin\Debug\File Comparitor.exe.config
+C:\Users\Jakob\source\repos\File Comparitor\bin\Debug\File Comparitor.exe
+C:\Users\Jakob\source\repos\File Comparitor\bin\Debug\File Comparitor.pdb
+C:\Users\Jakob\source\repos\File Comparitor\obj\Debug\File Comparitor.csprojAssemblyReference.cache
+C:\Users\Jakob\source\repos\File Comparitor\obj\Debug\File_Comparitor.ComparitorForm.resources
+C:\Users\Jakob\source\repos\File Comparitor\obj\Debug\File_Comparitor.Properties.Resources.resources
+C:\Users\Jakob\source\repos\File Comparitor\obj\Debug\File Comparitor.csproj.GenerateResource.cache
+C:\Users\Jakob\source\repos\File Comparitor\obj\Debug\File Comparitor.csproj.CoreCompileInputs.cache
+C:\Users\Jakob\source\repos\File Comparitor\obj\Debug\File Comparitor.exe
+C:\Users\Jakob\source\repos\File Comparitor\obj\Debug\File Comparitor.pdb
