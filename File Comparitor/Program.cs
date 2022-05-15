@@ -16,7 +16,7 @@ namespace File_Comparitor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ComparitorForm());
+            Application.Run(new ComparatorForm());
         }
     }
 }

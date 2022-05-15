@@ -1,0 +1,31 @@
+Different Line Outputs:
+{
+	coords: [12.500000,7.500000,546.000000],
+	size: 35.000000,
+	aspect: 0.750000,
+	png: @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
+},
+{
+	coords: [15.094864,7.500000,1.000000],
+	size: 35.000000,
+	aspect: 0.750000,
+	png: @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
+},
+{
+	coords: [3.566559,7.500000,5.000000],
+	size: 35.000000,
+	aspect: 0.750000,
+	png: @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
+},
+{
+	coords: [178.207001,7.500000,546.702881],
+	size: 35.000000,
+	aspect: 0.750000,
+	png: @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
+},
+{
+	coords: [178.207001,7.500000,546.702881],
+	size: 35.000000,
+	aspect: 0.750000,
+	png: @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
+},
