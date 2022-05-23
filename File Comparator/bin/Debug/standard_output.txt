@@ -1,6 +1,0 @@
-Different Line Outputs:
-[12.500000 7.500000 546.000000] 35.000000 0.750000 @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
-[15.094864 7.500000 1.000000] 35.000000 0.750000 @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
-[3.566559 7.500000 5.000000] 35.000000 0.750000 @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
-[178.207001 7.500000 546.702881] 35.000000 0.750000 @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq
-[178.207001 7.500000 546.702881] 35.000000 0.750000 @sx2022battlegroundsobjectpack/js/pyro/holeshotflames.seq

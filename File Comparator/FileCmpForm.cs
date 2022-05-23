@@ -193,14 +193,14 @@ namespace File_Comparitor {
 
             if (file_type == "billboards") {
                 // args: [x, y, z], size, aspect, png
-                json_line = "{\n\tcoords: " + args[0] + ',' + args[1] + ',' + args[2] +
-                    ",\n\tsize: " + args[3] + ",\n\taspect: " + args[4] + ",\n\tpng: " + args[5] + "\n},";
+                json_line = "{coords: " + args[0] + ',' + args[1] + ',' + args[2] +
+                    ", size: " + args[3] + ", aspect: " + args[4] + ", png: \"" + args[5] + "\"},";
             }
             else {
                 // args: [x, y, z], angle, jm, png, shp
-                json_line = "{\n\tcoords: " + args[0] + ',' + args[1] + ',' + args[2]
-                + ",\n\tangle: " + args[3] + ",\n\tjm: " + args[4] + ",\n\tpng: " + args[5]
-                + ",\n\tshp: " + args[6] + "\n},";
+                json_line = "{coords: " + args[0] + ',' + args[1] + ',' + args[2]
+                + ", angle: " + args[3] + ", jm: \"" + args[4] + "\", png: \"" + args[5]
+                + "\", shp: \"" + args[6] + "\"},";
             }
 
             // write the line, return true, we passed the parse
