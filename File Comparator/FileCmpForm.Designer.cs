@@ -1,4 +1,4 @@
-﻿namespace File_Comparitor
+﻿namespace File_Comparator
 {
     partial class ComparatorForm
     {
@@ -161,7 +161,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "ComparatorForm";
             this.Text = "MX Simulator Billboard/Statue Comparator";
-            this.Load += new System.EventHandler(this.ComparitorForm_Load);
+            this.Load += new System.EventHandler(this.ComparatorForm_Load);
             this.radioButtonGroup.ResumeLayout(false);
             this.radioButtonGroup.PerformLayout();
             this.ResumeLayout(false);

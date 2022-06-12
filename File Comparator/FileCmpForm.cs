@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace File_Comparitor {
+namespace File_Comparator {
     public partial class ComparatorForm : Form {
         public ComparatorForm() {
             InitializeComponent();
@@ -24,14 +24,16 @@ namespace File_Comparitor {
         // define a list that will hold the original lines
         List<string> original_lines;
         List<string> comp_file_lines;
+        List<string> JSON_Lines;
 
         // Misc Variables
         string file_type;
         string original_file_name;
+
         int different_lines = 0;
         bool file_type_error = false;
 
-        private void ComparitorForm_Load(object sender, EventArgs e) {
+        private void ComparatorForm_Load(object sender, EventArgs e) {
             ErrLabel.ResetText();
             file1label.ResetText();
             file2label.ResetText();
@@ -132,6 +134,8 @@ namespace File_Comparitor {
             }
             // Reset the error label text
             ErrLabel.ResetText();
+            // Reset json lines string array
+            JSON_Lines = new List<string>();
 
             // open the files and write the headers
             standardOut = File.CreateText(Environment.CurrentDirectory + "\\standard_output.txt");
@@ -167,10 +171,16 @@ namespace File_Comparitor {
                 if (!pass) return;
             }
 
+            foreach(string line in JSON_Lines) {
+                JSONOut.WriteLine(line);
+            }
+
             // close the files
             standardOut.Close();
             JSONOut.Close();
-            string out_msg = "Successfully Compared Files\n" + different_lines.ToString() + " different lines!";
+            string type = "billboards";
+            if (file_type == "statues") type = "statues";
+            string out_msg = "Successfully Compared Files\n" + different_lines.ToString() + " different " + type + "!";
             Change_Label(ErrLabel, Color.Green, out_msg);
             different_lines = 0;
         }
@@ -192,19 +202,63 @@ namespace File_Comparitor {
             string json_line;
 
             if (file_type == "billboards") {
+                
+                // Go through the JSON Lines to see if we have a billboard that already exists
+                for (int i = 0; i < JSON_Lines.Count; i++) {
+                    // Split the line when it hits a substring ", "
+                    string[] split = JSON_Lines[i].Split(new string[] { ", " }, StringSplitOptions.None);
+
+                    // Create a copy of our split lines
+                    string[] replace = new string[split.Length];
+                    split.CopyTo(replace, 0);
+                    
+                    // Convert JSON Line formatting to args formatting
+                    replace[1] = replace[1].Replace("size: ", string.Empty);
+                    replace[2] = replace[2].Replace("aspect: ", string.Empty);
+                    replace[3] = replace[3].Replace("png: \"", string.Empty).Replace("\"},", string.Empty);
+
+                    // if the size, aspect, and png are all the same, there is a billboard that already exists
+                    if (replace[1] == args[3] && replace[2] == args[4] && replace[3] == args[5]) {
+                        split[0] = split[0].Replace("]]", "]," + args[0] + "," + args[1] + "," + args[2] + "]");
+                        JSON_Lines[i] = split[0] + ", " + split[1] + ", " + split[2] + ", " + split[3];
+                        return true;
+                    }
+                }
                 // args: [x, y, z], size, aspect, png
-                json_line = "{coords: " + args[0] + ',' + args[1] + ',' + args[2] +
-                    ", size: " + args[3] + ", aspect: " + args[4] + ", png: \"" + args[5] + "\"},";
+                json_line = "{coords: [" + args[0] + ',' + args[1] + ',' + args[2] +
+                    "], size: " + args[3] + ", aspect: " + args[4] + ", png: \"" + args[5] + "\"},";
             }
             else {
+                // Go through the JSON Lines to see if we have a billboard that already exists
+                for (int i = 0; i < JSON_Lines.Count; i++) {
+                    // Split the line when it hits a substring ", "
+                    string[] split = JSON_Lines[i].Split(new string[] { ", " }, StringSplitOptions.None);
+
+                    // Create a copy of our split lines
+                    string[] replace = new string[split.Length];
+                    split.CopyTo(replace, 0);
+
+                    // Convert JSON Line formatting to args formatting
+                    replace[2] = replace[2].Replace("jm: ", string.Empty).Replace("\"", string.Empty);
+                    replace[3] = replace[3].Replace("png: ", string.Empty).Replace("\"", string.Empty);
+                    replace[4] = replace[4].Replace("shp: \"", string.Empty).Replace("\"},", string.Empty);
+
+                    // if the size, aspect, and png are all the same, there is a billboard that already exists
+                    if (replace[2] == args[4] && replace[3] == args[5] && replace[4] == args[6]) {
+                        split[0] = split[0].Replace("]]", "]," + args[0] + "," + args[1] + "," + args[2] + "]");
+                        split[1] = split[1].Replace("]", "," + args[3] + "]");
+                        JSON_Lines[i] = split[0] + ", " + split[1] + ", " + split[2] + ", " + split[3] + ", " + split[4];
+                        return true;
+                    }
+                }
                 // args: [x, y, z], angle, jm, png, shp
-                json_line = "{coords: " + args[0] + ',' + args[1] + ',' + args[2]
-                + ", angle: " + args[3] + ", jm: \"" + args[4] + "\", png: \"" + args[5]
+                json_line = "{coords: [" + args[0] + ',' + args[1] + ',' + args[2]
+                + "], angles: [" + args[3] + "], jm: \"" + args[4] + "\", png: \"" + args[5]
                 + "\", shp: \"" + args[6] + "\"},";
             }
 
             // write the line, return true, we passed the parse
-            JSONOut.WriteLine(json_line);
+            JSON_Lines.Add(json_line);
             return true;
         }
 
