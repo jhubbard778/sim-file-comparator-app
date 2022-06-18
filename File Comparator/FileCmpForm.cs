@@ -171,7 +171,8 @@ namespace File_Comparator {
                 if (!pass) return;
             }
 
-            foreach(string line in JSON_Lines) {
+            var result = JSON_Lines.OrderBy(x => x.Length);
+            foreach(string line in result) {
                 JSONOut.WriteLine(line);
             }
 
